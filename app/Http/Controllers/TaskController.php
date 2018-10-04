@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
+use Faker\Generator;
+use Symfony\Component\HttpFoundation\Response;
 
 class TaskController extends Controller
 {
@@ -13,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return 'ITS work';
+        return response(Task::all()->jsonSerialize(),Response::HTTP_OK);
     }
 
     /**
@@ -21,9 +24,15 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Generator $faker)
     {
-        //
+        $task = new Task();
+        $task->title = $faker->sentence(1);
+        $task->priority = $faker->boolean ? 'low':'high';
+        $task->save();
+
+        return response($task->jsonSerialize(),Response::HTTP_CREATED);
+        // return $task;
     }
 
     /**
@@ -34,42 +43,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+        $task->title = $request->title;
+        $task->priority = $request->priority;
+        $task->save();
+
+        return response($task->jsonSerialize(),Response::HTTP_CREATED);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +61,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Task::destroy($id);
+        return response(null,Response::HTTP_OK);
     }
 }
