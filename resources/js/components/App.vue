@@ -1,10 +1,16 @@
 <template>
-    
+    <div class="app-component">
+
+    </div>
 </template>
 
 <script>
-    export default {
-        name: "App.vue"
+    export default  {
+        data() {
+            return {
+
+            }
+        }
     }
 </script>
 
