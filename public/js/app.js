@@ -47945,7 +47945,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47956,18 +47956,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47998,30 +47986,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "task-component" }, [
-      _c("tr", [
-        _c("td", [_vm._v("John")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Doe")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("john@doe.com")])
-      ]),
+    return _c("tr", [
+      _c("td", [_vm._v("John")]),
       _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("John")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Doe")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("john@doe.com")])
-      ]),
+      _c("td", [_vm._v("Doe")]),
       _vm._v(" "),
-      _c("tr", [
-        _c("td", [_vm._v("John")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Doe")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("john@doe.com")])
-      ])
+      _c("td", [_vm._v("john@doe.com")])
     ])
   }
 ]
