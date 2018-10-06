@@ -11,18 +11,19 @@
             </thead>
             <tbody>
 
-                <task-component v-for="task in tasks" :key="task.id" :task="task"></task-component>
+            <!--@delete from Task.vue method remove with this.$emit('delete',this.task.id);-->
+                <task-component v-for="task in tasks" :key="task.id" :task="task" @delete="remove"></task-component>
 
                 <tr>
-                    <td><input type="text" id="task" class="form-control"></td>
+                    <td><input v-model="task.title" type="text" id="task" class="form-control"></td>
                     <td>
-                        <select  id="select" class="form-control">
+                        <select v-model="task.priority"  id="select" class="form-control">
                             <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>
                         </select>
                     </td>
-                    <td><button class="btn btn-primary">ADD</button></td>
+                    <td><button @click="store" class="btn btn-primary">ADD</button></td>
                 </tr>
             </tbody>
         </table>
@@ -37,7 +38,8 @@
     export default  {
         data() {
             return {
-                tasks: []
+                tasks: [],
+                task: {title:'',priority:''}
             }
         },
 
@@ -49,8 +51,18 @@
                             this.tasks.push(task);
                         });
                     });
-            }
+            },
+            store(){
+                window.axios.post('/api/tasks',this.task).then(savedTask => {
+                    this.tasks.push(savedTask.data);
+                     this.task.title = '';
+                    this.task.priority = '';
+                })
+            },
+            remove() { //Binding from  Task.Vue
+                console.log(`I GOT THE DATA ${task.id}`);
 
+            }
         },
         created() {
             this.getTaks();
