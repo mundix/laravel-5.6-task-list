@@ -47768,6 +47768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -47794,7 +47795,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
-        console.log("INitialize");
         this.getTaks();
     },
 
@@ -47887,7 +47887,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47898,6 +47898,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -47924,6 +47925,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("tr", [
+    _c("td", [_vm._v(_vm._s(_vm.task.id))]),
+    _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.title))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.priority))]),
@@ -47983,6 +47986,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Task Title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Priority Level")]),

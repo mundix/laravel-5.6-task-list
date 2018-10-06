@@ -3,6 +3,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Task Title</th>
                     <th>Priority Level</th>
                     <th>Action</th>
