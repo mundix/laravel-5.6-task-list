@@ -54,7 +54,7 @@
             },
             store(){
 
-                if(this.task.title && this.task.priority)
+                if(this.checkImputs())
                 {
                     window.axios.post('/api/tasks',this.task).then(savedTask => {
                         this.tasks.push(savedTask.data);
@@ -62,6 +62,10 @@
                         this.task.priority = '';
                     })
                 }
+
+            },
+            checkImputs() {
+              if(this.task.title && this.task.priority) return true;
 
             },
             remove(id) { //Binding from  Task.Vue
