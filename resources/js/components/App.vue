@@ -10,7 +10,7 @@
             </thead>
             <tbody>
 
-                <task-component></task-component>
+                <task-component v-for="task in tasks" :key="task.id" :task="task"></task-component>
 
                 <tr>
                     <td><input type="text" id="task" class="form-control"></td>
@@ -36,8 +36,23 @@
     export default  {
         data() {
             return {
-                message: "Hello we are here"
+                tasks: []
             }
+        },
+
+        methods: {
+            getTaks() {
+                window.axios.get('/api/tasks')
+                    .then(({data})=>{
+                        data.forEach(task => {
+                            this.tasks.push(task);
+                        });
+                    });
+            }
+
+        },
+        created() {
+            this.getTaks();
         },
         components: {TaskComponent}
     }

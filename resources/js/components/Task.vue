@@ -1,8 +1,8 @@
 <template>
         <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@doe.com</td>
+            <td>{{task.title}}</td>
+            <td>{{task.priority}}</td>
+            <td><button class="btn btn-danger">Remove</button></td>
         </tr>
 </template>
 
@@ -12,7 +12,8 @@
             return {
 
             }
-        }
+        },
+        props: ['task']
     }
 </script>
 
