@@ -53,14 +53,23 @@
                     });
             },
             store(){
-                window.axios.post('/api/tasks',this.task).then(savedTask => {
-                    this.tasks.push(savedTask.data);
-                     this.task.title = '';
-                    this.task.priority = '';
-                })
+
+                if(this.task.title && this.task.priority)
+                {
+                    window.axios.post('/api/tasks',this.task).then(savedTask => {
+                        this.tasks.push(savedTask.data);
+                         this.task.title = '';
+                        this.task.priority = '';
+                    })
+                }
+
             },
-            remove() { //Binding from  Task.Vue
-                console.log(`I GOT THE DATA ${task.id}`);
+            remove(id) { //Binding from  Task.Vue
+                // console.log(`I GOT THE DATA ${id}`);
+                window.axios.delete(`/api/tasks/${id}`).then(()=>{
+                    let index = this.tasks.findIndex(task => task.id === id);
+                    this.tasks.splice(index,1);
+                });
 
             }
         },

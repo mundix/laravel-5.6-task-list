@@ -17,6 +17,7 @@
         methods: {
             remove(){
                 //named however you want remove or delete
+                // Emition feature from Vue , emit the id task
                 this.$emit('delete',this.task.id);
                 //need a way to listen to it, putting into teh component  task-component
             }

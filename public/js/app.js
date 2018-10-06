@@ -47691,7 +47691,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47798,15 +47798,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         store: function store() {
             var _this2 = this;
 
-            window.axios.post('/api/tasks', this.task).then(function (savedTask) {
-                _this2.tasks.push(savedTask.data);
-                _this2.task.title = '';
-                _this2.task.priority = '';
-            });
+            if (this.task.title && this.task.priority) {
+                window.axios.post('/api/tasks', this.task).then(function (savedTask) {
+                    _this2.tasks.push(savedTask.data);
+                    _this2.task.title = '';
+                    _this2.task.priority = '';
+                });
+            }
         },
-        remove: function remove() {
+        remove: function remove(id) {
+            var _this3 = this;
+
             //Binding from  Task.Vue
-            console.log('I GOT THE DATA ' + task.id);
+            // console.log(`I GOT THE DATA ${id}`);
+            window.axios.delete('/api/tasks/' + id).then(function () {
+                var index = _this3.tasks.findIndex(function (task) {
+                    return task.id === id;
+                });
+                _this3.tasks.splice(index, 1);
+            });
         }
     },
     created: function created() {
@@ -47902,7 +47912,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47931,6 +47941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         remove: function remove() {
             //named however you want remove or delete
+            // Emition feature from Vue , emit the id task
             this.$emit('delete', this.task.id);
             //need a way to listen to it, putting into teh component  task-component
         }
